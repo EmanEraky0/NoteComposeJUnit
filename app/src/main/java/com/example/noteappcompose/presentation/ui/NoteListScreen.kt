@@ -10,7 +10,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
@@ -31,7 +30,6 @@ import com.example.noteappcompose.domain.model.Note
 import com.example.noteappcompose.presentation.component.NoteCard
 import com.example.noteappcompose.presentation.viewmodel.NoteViewModel
 import com.example.noteappcompose.presentation.viewmodel.states.NoteUiState
-import kotlinx.coroutines.delay
 import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)

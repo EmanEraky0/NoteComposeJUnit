@@ -58,6 +58,12 @@ truth = { module = "com.google.truth:truth", version.ref = "truth" }
 turbine-v110 = { module = "app.cash.turbine:turbine", version.ref = "turbineVersion" }
 turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutinesTest" }
+#//Ui Testing
+androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version = "1.1.5" }
+androidx-test-espresso = { group = "androidx.test.espresso", name = "espresso-core", version = "3.5.1" }
+koin-test = { group = "io.insert-koin", name = "koin-test" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

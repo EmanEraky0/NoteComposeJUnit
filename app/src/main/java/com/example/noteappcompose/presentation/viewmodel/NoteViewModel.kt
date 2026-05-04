@@ -20,19 +20,19 @@ import kotlinx.coroutines.flow.flatMapLatest
  import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-class NoteViewModel(
+open class NoteViewModel(
     private val getNotesUseCase: GetNotesUseCase,
     private val searchNotesUseCase: SearchNotesUseCase,
     private val saveNoteUseCase: SaveNoteUseCase,
     private val deleteNoteUseCase: DeleteNoteUseCase
 ) : ViewModel() {
     private val _uiState = MutableStateFlow<NoteUiState>(NoteUiState.Loading)
-    val uiState: StateFlow<NoteUiState> = _uiState.asStateFlow()
+   open val uiState: StateFlow<NoteUiState> = _uiState.asStateFlow()
 
     private val _searchQuery = MutableStateFlow("")
     val searchQuery: StateFlow<String> = _searchQuery.asStateFlow()
 
-    val notes: StateFlow<List<Note>> = _searchQuery
+    open val notes: StateFlow<List<Note>> = _searchQuery
         .debounce(300) //waits for user to stop typing
         .flatMapLatest { query ->// ← triggered immediately
             _uiState.value = NoteUiState.Idle
@@ -50,20 +50,22 @@ class NoteViewModel(
         _searchQuery.value = query
     }
 
-    fun saveNote(note: Note) = viewModelScope.launch(Dispatchers.IO) {
-        _uiState.value = NoteUiState.Loading
-        val result = saveNoteUseCase(note)
-        _uiState.value =
-            if (result.isSuccess)
-                NoteUiState.Saved
-            else
-                NoteUiState.Error(result.exceptionOrNull()?.message ?: "Save failed")
+   open fun saveNote(note: Note) {
+       viewModelScope.launch(Dispatchers.IO) {
+           _uiState.value = NoteUiState.Loading
+           val result = saveNoteUseCase(note)
+           _uiState.value =
+               if (result.isSuccess)
+                   NoteUiState.Saved
+               else
+                   NoteUiState.Error(result.exceptionOrNull()?.message ?: "Save failed")
 
-        if (result.isSuccess) {
-            delay(100)
-            _uiState.value = NoteUiState.Idle
-        }
-    }
+           if (result.isSuccess) {
+               delay(100)
+               _uiState.value = NoteUiState.Idle
+           }
+       }
+   }
 
     fun deleteNote(note: Note) = viewModelScope.launch {
         deleteNoteUseCase(note)

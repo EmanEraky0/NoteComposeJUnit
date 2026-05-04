@@ -13,13 +13,19 @@
         </DropdownSelection>
         <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="insertAndRetrieveNote()">
+      <SelectionState runConfigName="typingTitleAndSavingCallsSaveNote()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="searchIsCaseInsensitive()">
+      <SelectionState runConfigName="NoteEditScreenTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="updateNote()">
+      <SelectionState runConfigName="titleContentAppear()">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="deleteDialogConfirm()">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
+      <SelectionState runConfigName="deleteBtnAndDialog()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>
